@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steve Madden - Product Showcase</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            color: #000000;
+        }
+        
+        .mockup-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 40px;
+            font-size: 32px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .logos-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .logos-container img {
+            max-height: 60px;
+            width: auto;
+        }
+        
+        .logos-container img[src*="Steve Madden"] {
+            max-height: 48px; /* 20% smaller than 60px */
+        }
+        
+        .category-section {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        .category-title {
+            font-size: 28px;
+            color: #000000;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 3px solid #000000;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .size-section {
+            margin-bottom: 40px;
+        }
+        
+        .size-title {
+            font-size: 20px;
+            color: #666666;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .gif-showcase {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .gif-frame {
+            display: inline-block;
+            border: 2px solid #000000;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gif-frame:hover {
+            transform: scale(1.05);
+        }
+        
+        .gif-frame img {
+            display: block;
+            border: none;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+        
+        .banner-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .product-item {
+            background: #f8f8f8;
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #000000;
+        }
+        
+        .product-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .product-info {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .product-name {
+            font-size: 14px;
+            color: #000000;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .byatlas-logo {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+        }
+        
+        .byatlas-logo img {
+            max-height: 60px;
+            width: auto;
+        }
+        
+        .gif-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+        
+        .gif-item {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .gif-item img {
+            display: block;
+            max-width: 300px;
+            height: auto;
+        }
+        
+        .play-pause-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
+            z-index: 10;
+        }
+        
+        .play-pause-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .gif-title {
+            font-size: 18px;
+            color: #000000;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="logos-container">
+        <img src="byatlas_lockup.png" alt="ByAtlas" />
+        <img src="Steve Madden_Logo.png" alt="Steve Madden" />
+    </div>
+    
+    <div class="mockup-container">
+        <h1>Steve Madden AW25 Collection</h1>
+        
+        <!-- Animated GIF Showcase -->
+        <div class="gif-showcase">
+            <div class="gif-container">
+                <div class="gif-item">
+                    <img id="boots-gif" src="boots/1x/Steve_boots_Artboard 1-100_300x600.jpg" alt="Steve Madden Boots Collection" data-gif="BootsGIF_300x600.gif" data-static="boots/1x/Steve_boots_Artboard 1-100_300x600.jpg">
+                    <button class="play-pause-btn" onclick="toggleGif('boots-gif')" id="boots-btn">▶</button>
+                </div>
+                
+                <div class="gif-item">
+                    <img id="heels-gif" src="heels/1x/Steve_Heels_Artboard 1-100_300x600.jpg" alt="Steve Madden Heels Collection" data-gif="HeelsGIF_300x600.gif" data-static="heels/1x/Steve_Heels_Artboard 1-100_300x600.jpg">
+                    <button class="play-pause-btn" onclick="toggleGif('heels-gif')" id="heels-btn">▶</button>
+                </div>
+                
+                <div class="gif-item">
+                    <img id="sandals-gif" src="sandals/1x/Steve_Sandals_Artboard 1-100_300x600.jpg" alt="Steve Madden Sandals Collection" data-gif="SandalsGIF_300x600.gif" data-static="sandals/1x/Steve_Sandals_Artboard 1-100_300x600.jpg">
+                    <button class="play-pause-btn" onclick="toggleGif('sandals-gif')" id="sandals-btn">▶</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Boots Section -->
+        <div class="category-section">
+            <div class="category-title">Boots Collection</div>
+            
+            <!-- 970x250 Banner Size -->
+            <div class="size-section">
+                <div class="size-title">970 × 250 - Banner Format</div>
+                <div class="banner-grid">
+                    <div class="product-item">
+                        <img src="boots/1x/Steve_boots_Artboard 4-100_970x250.jpg" alt="Steve Madden Boots Banner">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 300x600 Portrait Size -->
+            <div class="size-section">
+                <div class="size-title">300 × 600 - Portrait Format</div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="boots/1x/Steve_boots_Artboard 1-100_300x600.jpg" alt="Steve Madden Boots Portrait 1">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="boots/1x/Steve_boots_Artboard 5-100_300x600.jpg" alt="Steve Madden Boots Portrait 5">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="boots/1x/Steve_boots_Artboard 6-100_300x600.jpg" alt="Steve Madden Boots Portrait 6">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="boots/1x/Steve_boots_Artboard 7-100_300x600.jpg" alt="Steve Madden Boots Portrait 7">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 300x250 Square Size -->
+            <div class="size-section">
+                <div class="size-title">300 × 250 - Square Format</div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="boots/1x/Steve_boots_Artboard 2-100_300x250.jpg" alt="Steve Madden Boots Square 2">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="boots/1x/Steve_boots_Artboard 8-100_300x250.jpg" alt="Steve Madden Boots Square 8">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="boots/1x/Steve_boots_Artboard 9-100_300x250.jpg" alt="Steve Madden Boots Square 9">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="boots/1x/Steve_boots_Artboard 10-100_300x250.jpg" alt="Steve Madden Boots Square 10">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Heels Section -->
+        <div class="category-section">
+            <div class="category-title">Heels Collection</div>
+            
+            <!-- 970x250 Banner Size -->
+            <div class="size-section">
+                <div class="size-title">970 × 250 - Banner Format</div>
+                <div class="banner-grid">
+                    <div class="product-item">
+                        <img src="heels/1x/Steve_Heels_Artboard 4-100_970x250.jpg" alt="Steve Madden Heels Banner">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 300x600 Portrait Size -->
+            <div class="size-section">
+                <div class="size-title">300 × 600 - Portrait Format</div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="heels/1x/Steve_Heels_Artboard 1-100_300x600.jpg" alt="Steve Madden Heels Portrait 1">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="heels/1x/Steve_Heels_Artboard 5-100_300x600.jpg" alt="Steve Madden Heels Portrait 5">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="heels/1x/Steve_Heels_Artboard 6-100_300x600.jpg" alt="Steve Madden Heels Portrait 6">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="heels/1x/Steve_Heels_Artboard 7-100_300x600.jpg" alt="Steve Madden Heels Portrait 7">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 300x250 Square Size -->
+            <div class="size-section">
+                <div class="size-title">300 × 250 - Square Format</div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="heels/1x/Steve_Heels_Artboard 2-100_300x250.jpg" alt="Steve Madden Heels Square 2">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="heels/1x/Steve_Heels_Artboard 8-100_300x250.jpg" alt="Steve Madden Heels Square 8">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="heels/1x/Steve_Heels_Artboard 9-100_300x250.jpg" alt="Steve Madden Heels Square 9">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="heels/1x/Steve_Heels_Artboard 10-100_300x250.jpg" alt="Steve Madden Heels Square 10">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sandals Section -->
+        <div class="category-section">
+            <div class="category-title">Sandals Collection</div>
+            
+            <!-- 970x250 Banner Size -->
+            <div class="size-section">
+                <div class="size-title">970 × 250 - Banner Format</div>
+                <div class="banner-grid">
+                    <div class="product-item">
+                        <img src="sandals/1x/Steve_Sandals_Artboard 4-100_970x250.jpg" alt="Steve Madden Sandals Banner">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 300x600 Portrait Size -->
+            <div class="size-section">
+                <div class="size-title">300 × 600 - Portrait Format</div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="sandals/1x/Steve_Sandals_Artboard 1-100_300x600.jpg" alt="Steve Madden Sandals Portrait 1">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="sandals/1x/Steve_Sandals_Artboard 5-100_300x600.jpg" alt="Steve Madden Sandals Portrait 5">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="sandals/1x/Steve_Sandals_Artboard 6-100_300x600.jpg" alt="Steve Madden Sandals Portrait 6">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="sandals/1x/Steve_Sandals_Artboard 7-100_300x600.jpg" alt="Steve Madden Sandals Portrait 7">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 300x250 Square Size -->
+            <div class="size-section">
+                <div class="size-title">300 × 250 - Square Format</div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <img src="sandals/1x/Steve_Sandals_Artboard 2-100_300x250.jpg" alt="Steve Madden Sandals Square 2">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="sandals/1x/Steve_Sandals_Artboard 8-100_300x250.jpg" alt="Steve Madden Sandals Square 8">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="sandals/1x/Steve_Sandals_Artboard 9-100_300x250.jpg" alt="Steve Madden Sandals Square 9">
+                    </div>
+                    
+                    <div class="product-item">
+                        <img src="sandals/1x/Steve_Sandals_Artboard 10-100_300x250.jpg" alt="Steve Madden Sandals Square 10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Add interactive hover effects for product items
+        document.addEventListener('DOMContentLoaded', function() {
+            const productItems = document.querySelectorAll('.product-item');
+            
+            productItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(-5px) scale(1)';
+                });
+            });
+        });
+        
+        // GIF play/pause functionality
+        function toggleGif(gifId) {
+            const img = document.getElementById(gifId);
+            const btn = document.getElementById(gifId.replace('-gif', '-btn'));
+            const gifSrc = img.getAttribute('data-gif');
+            const staticSrc = img.getAttribute('data-static');
+            
+            if (img.src.includes('.gif')) {
+                // Currently playing GIF, switch to static
+                img.src = staticSrc;
+                btn.innerHTML = '▶';
+                btn.title = 'Play animation';
+            } else {
+                // Currently static, switch to GIF
+                img.src = gifSrc;
+                btn.innerHTML = '⏸';
+                btn.title = 'Pause animation';
+            }
+        }
+        
+        // Add global play/pause all function
+        function toggleAllGifs() {
+            const gifs = ['boots-gif', 'heels-gif', 'sandals-gif'];
+            const firstGif = document.getElementById('boots-gif');
+            const isPlaying = firstGif.src.includes('.gif');
+            
+            gifs.forEach(gifId => {
+                const img = document.getElementById(gifId);
+                const btn = document.getElementById(gifId.replace('-gif', '-btn'));
+                const gifSrc = img.getAttribute('data-gif');
+                const staticSrc = img.getAttribute('data-static');
+                
+                if (isPlaying) {
+                    // Pause all
+                    img.src = staticSrc;
+                    btn.innerHTML = '▶';
+                    btn.title = 'Play animation';
+                } else {
+                    // Play all
+                    img.src = gifSrc;
+                    btn.innerHTML = '⏸';
+                    btn.title = 'Pause animation';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

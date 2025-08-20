@@ -1,0 +1,34 @@
+{
+  "name": "steve-madden-aw25-showcase",
+  "version": "1.0.0",
+  "description": "Interactive HTML5 showcase for Steve Madden AW25 footwear collection with organized product galleries and GIF controls",
+  "main": "mockup.html",
+  "scripts": {
+    "start": "open mockup.html",
+    "serve": "python3 -m http.server 8000",
+    "serve-alt": "python -m SimpleHTTPServer 8000"
+  },
+  "keywords": [
+    "steve-madden",
+    "footwear",
+    "showcase",
+    "html5",
+    "responsive",
+    "product-gallery",
+    "advertising",
+    "fashion"
+  ],
+  "author": "ByAtlas",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/steve-madden-aw25-showcase.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/steve-madden-aw25-showcase/issues"
+  },
+  "homepage": "https://yourusername.github.io/steve-madden-aw25-showcase/",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
